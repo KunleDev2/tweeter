@@ -6,9 +6,9 @@
 }
 
 #tweet-text::placeholder {
-color: #555149;
-font-family: 'Source Sans 3', sans-serif;
-font-weight: bold;
+  color: #555149;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: bold;
 }
 
 .btn-style {
@@ -36,8 +36,8 @@ font-weight: bold;
 }
 
 .tweet header {
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .tweet header span {

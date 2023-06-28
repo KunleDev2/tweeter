@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#tweet-text').on('input', function(){
+  $('#tweet-text').on('input', function() {
     const initConstVal = 140;
     let countDowntVal = $(this).val().length;
 
