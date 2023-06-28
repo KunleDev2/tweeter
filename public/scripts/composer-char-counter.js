@@ -7,6 +7,8 @@ $(document).ready(function() {
 
     if (initCounterTwo < 0) {
       $('.counter').addClass('below-limit');
+    } else {
+      $('.counter').removeClass('below-limit');
     }
 
     $('.counter').val(initCounterTwo);
