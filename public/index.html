@@ -54,40 +54,17 @@
   <main class="container">
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
-      <form method="post" action="/tweets">
+      <form method="post" action="/tweets" id="new-form">
         <!-- <label for="tweet-text"><b>What are you humming about?</b></label> -->
         <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
         <div class="btn-bottom">
-          <button type="submit" class="btn-style">Tweet</button>
+          <button type="submit" class="btn-style" id="submit-form">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
         </div>
       </form>
     </section>
     <section id="fresh-tweet">
-      <article class="tweet">
-        <header>
-          <span>
-            <img src="https://i.imgur.com/73hZDYK.png" alt="">
-            <a>Newton</a>
-          </span>
-          <a class="profile-style">@SirIsaac</a>
-        </header>
-
-        <body>
-          <div class="tweet-text">
-            If I have seen further it is by standing on the shoulders of giants
-          </div>
-          <hr>
-        </body>
-        <footer>
-          <span>10 days ago</span>
-          <div>
-            <i class="fa-solid fa-flag"></i>
-            <i class="fa-sharp fa-solid fa-repeat"></i>
-            <i class="fa-solid fa-heart"></i>
-          </div>
-        </footer>
-      </article>
+      
     </section>
   </main>
 </body>
