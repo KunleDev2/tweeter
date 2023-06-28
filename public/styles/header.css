@@ -1,0 +1,13 @@
+header {
+  height: 520px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #e00086;
+}
+
+.image-style {
+  padding-top: 100px
+}

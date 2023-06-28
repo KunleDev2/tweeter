@@ -1,0 +1,23 @@
+nav {
+  font-family: 'Bungee', cursive;
+  height: 120px;
+  width: 100%;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+}
+
+nav span {
+  padding: 1.5em;
+  font-family: 'Bungee', cursive;
+}
+
+#header-logo {
+  font-family: 'Source Sans 3', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
