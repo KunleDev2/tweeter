@@ -35,14 +35,14 @@ $(document).ready(function() {
 
   submitForm.addEventListener('click', function(event) {
     event.preventDefault();
-    
+
     const postingData = $(getFormData).serialize();
     const textData = $('#tweet-text').val().length;
 
     if (textData > 140) {
       alert('Lenght is greater than 140 in lenght');
       return;
-    } else if(textData < 1) {
+    } else if (textData < 1) {
       alert('Field can not be empty');
       return;
     };
@@ -53,6 +53,9 @@ $(document).ready(function() {
       data: postingData,
       success: function(resp) {
         console.log(resp);
+        console.log("hello");
+        $('#fresh-tweet').empty();
+        loadTweets();
       },
       error: function(error) {
         console.log(error);
@@ -62,18 +65,18 @@ $(document).ready(function() {
   });
 
   const renderTweets = (tweets) => {
-      let result = '';
+    let result = '';
 
-      for (let i = 0; i < tweets.length; i++) {
+    for (let i = 0; i < tweets.length; i++) {
 
-        // let dateFormat = format();
+      // let dateFormat = format();
 
-        // tweets[i].created_at = dateFormat;
+      // tweets[i].created_at = dateFormat;
 
-        result = createTweetElement(tweets[i]);
+      result = createTweetElement(tweets[i]);
 
-        $('#fresh-tweet').append(result);
-      };
+      $('#fresh-tweet').append(result);
+    };
   };
 
   const createTweetElement = function(tweet) {
