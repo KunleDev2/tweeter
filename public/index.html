@@ -29,7 +29,9 @@
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/client.js"></script>
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-  <script src="//unpkg.com/timeago.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
+    integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -43,34 +45,34 @@
   </nav>
 
   <div class="lower-body">
-  <header class="top-header">
-    <div class="image-style">
-      <img src="/images/profile-hex.png">
-    </div>
-    <div>
-      <b>Amy</b> Mansell
-    </div>
-  </header>
+    <header class="top-header">
+      <div class="image-style">
+        <img src="/images/profile-hex.png">
+      </div>
+      <div>
+        <b>Amy</b> Mansell
+      </div>
+    </header>
 
-  <!-- Page-specific (main) content here -->
-  <main class="container">
-    <section class="new-tweet">
-      <h2>Compose Tweet</h2>
-    <h5 class="error-msg"></h5>
-      <form method="post" action="/tweets" id="new-form">
-        <!-- <label for="tweet-text"><b>What are you humming about?</b></label> -->
-        <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
-        <div class="btn-bottom">
-          <button type="submit" class="btn-style" id="submit-form">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
-        </div>
-      </form>
-    </section>
-    <section id="fresh-tweet">
-      
-    </section>
-  </main>
-</div>
+    <!-- Page-specific (main) content here -->
+    <main class="container">
+      <section class="new-tweet">
+        <h2>Compose Tweet</h2>
+        <h5 class="error-msg"></h5>
+        <form method="post" action="/tweets" id="new-form">
+          <!-- <label for="tweet-text"><b>What are you humming about?</b></label> -->
+          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <div class="btn-bottom">
+            <button type="submit" class="btn-style" id="submit-form">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
+      <section id="fresh-tweet">
+
+      </section>
+    </main>
+  </div>
 </body>
 
 </html>

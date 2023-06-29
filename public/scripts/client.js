@@ -4,31 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1687738513076
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1687824913076
-  }
-];
-
 $(document).ready(function() {
   const submitForm = document.getElementById('submit-form');
   const getFormData = document.getElementById('new-form');
@@ -43,8 +18,8 @@ $(document).ready(function() {
     if (textData > 140) {
       errorMsg.slideUp();
       setTimeout(function() {
-      errorMsg.text('Lenght is greater than 140 in lenght');
-      errorMsg.slideDown();
+        errorMsg.text('Lenght is greater than 140 in lenght');
+        errorMsg.slideDown();
       }, 500);
       return;
     } else if (textData < 1) {
@@ -61,8 +36,7 @@ $(document).ready(function() {
       type: 'POST',
       data: postingData,
       success: function(resp) {
-        console.log(resp);
-        console.log("hello");
+        $('#tweet-text').val('');
         $('#fresh-tweet').empty();
         loadTweets();
       },
@@ -75,14 +49,11 @@ $(document).ready(function() {
 
   const renderTweets = (tweets) => {
     let result = '';
+    const revTweet = tweets.reverse();
 
     for (let i = 0; i < tweets.length; i++) {
 
-      // let dateFormat = format();
-
-      // tweets[i].created_at = dateFormat;
-
-      result = createTweetElement(tweets[i]);
+      result = createTweetElement(revTweet[i]);
 
       $('#fresh-tweet').append(result);
     };
@@ -105,7 +76,7 @@ $(document).ready(function() {
     <hr>
   </body>
   <footer>
-    <span>${tweet.created_at} days ago</span>
+    <span>${timeago.format(tweet.created_at)} days ago</span>
     <div>
       <i class="fa-solid fa-flag"></i>
       <i class="fa-sharp fa-solid fa-repeat"></i>
