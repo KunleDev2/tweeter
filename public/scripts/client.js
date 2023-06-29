@@ -41,12 +41,18 @@ $(document).ready(function() {
     const errorMsg = $('.error-msg');
 
     if (textData > 140) {
+      errorMsg.slideUp();
+      setTimeout(function() {
       errorMsg.text('Lenght is greater than 140 in lenght');
       errorMsg.slideDown();
+      }, 500);
       return;
     } else if (textData < 1) {
-      errorMsg.text('Field can not be empty');
-      errorMsg.slideDown();
+      errorMsg.slideUp();
+      setTimeout(function() {
+        errorMsg.text('Field can not be empty');
+        errorMsg.slideDown();
+      }, 500);
       return;
     };
 
