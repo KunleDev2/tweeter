@@ -14,8 +14,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
-!["screenshot description"](https://github.com/KunleDev2/tweeter/blob/master/images/imgone.PNG)
-!["screenshot description"](https://github.com/KunleDev2/tweeter/blob/master/images/imgtwo.PNG)
+!["screenshot description"](https://github.com/KunleDev2/tweeter/blob/master/public/images/imgone.PNG)
+!["screenshot description"](https://github.com/KunleDev2/tweeter/blob/master/public/images/imgtwo.PNG)
 
 ## Dependencies
 
