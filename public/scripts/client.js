@@ -38,12 +38,15 @@ $(document).ready(function() {
 
     const postingData = $(getFormData).serialize();
     const textData = $('#tweet-text').val().length;
+    const errorMsg = $('.error-msg');
 
     if (textData > 140) {
-      alert('Lenght is greater than 140 in lenght');
+      errorMsg.text('Lenght is greater than 140 in lenght');
+      errorMsg.slideDown();
       return;
     } else if (textData < 1) {
-      alert('Field can not be empty');
+      errorMsg.text('Field can not be empty');
+      errorMsg.slideDown();
       return;
     };
 
