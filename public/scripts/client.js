@@ -35,7 +35,17 @@ $(document).ready(function() {
 
   submitForm.addEventListener('click', function(event) {
     event.preventDefault();
+    
     const postingData = $(getFormData).serialize();
+    const textData = $('#tweet-text').val().length;
+
+    if (textData > 140) {
+      alert('Lenght is greater than 140 in lenght');
+      return;
+    } else if(textData < 1) {
+      alert('Field can not be empty');
+      return;
+    };
 
     $.ajax({
       url: 'http://localhost:3000/tweets',
@@ -52,25 +62,18 @@ $(document).ready(function() {
   });
 
   const renderTweets = (tweets) => {
-    $(document).ready(function() {
       let result = '';
 
       for (let i = 0; i < tweets.length; i++) {
 
-        const forDate = new Date(tweets[i].created_at);
-        const currDate = new Date();
+        // let dateFormat = format();
 
-        const dayDiff = forDate.getTime() - currDate.getTime();
-
-        const convDayDiff = Math.abs(Math.floor(dayDiff / (1000 * 60 * 60 * 24)))
-
-        tweets[i].created_at = convDayDiff;
+        // tweets[i].created_at = dateFormat;
 
         result = createTweetElement(tweets[i]);
 
         $('#fresh-tweet').append(result);
       };
-    });
   };
 
   const createTweetElement = function(tweet) {
@@ -102,6 +105,18 @@ $(document).ready(function() {
     return $tweet;
   };
 
-  renderTweets(data);
+  const loadTweets = () => {
+    $.ajax({
+      url: 'http://localhost:3000/tweets',
+      type: 'GET',
+      success: function(resp) {
+        renderTweets(resp);
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
+  };
 
+  loadTweets();
 });
