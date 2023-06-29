@@ -71,20 +71,31 @@
   color: #4055a1;
 }
 
+.tweet {
+  border: 4px solid #555149;
+  margin-top: 40px;
+}
+
 .tweet footer i:hover {
   color: #daa64b;
 }
 
 #fresh-tweet {
-  border: 4px solid #555149;
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-#fresh-tweet:hover {
+.tweet:hover {
   box-shadow: 6px 6px 11px rgba(0, 0, 0, 0.5);
 }
 
 .profile-style {
   color: #c8cde3;
+}
+
+.error-msg {
+  border: 4px solid #ff0000;
+  padding: 8px;
+  display: none;
+  color: #ff0000;
 }

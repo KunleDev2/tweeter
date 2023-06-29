@@ -1,5 +1,5 @@
 .top-header {
-  height: 520px;
+  height: 400px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -9,5 +9,16 @@
 }
 
 .image-style {
-  padding-top: 100px
+  padding-top: 50px
+}
+
+@media (min-width: 1024px) {
+  .top-header {
+    margin: 90px;
+    width: 50%;
+  }
+
+  .image-style {
+    padding-top: 50px;
+}
 }

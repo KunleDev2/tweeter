@@ -2,7 +2,7 @@ nav {
   font-family: 'Bungee', cursive;
   height: 120px;
   width: 100%;
-  background-color: #4056A1;
+  background-color: transparent;
   color: #FFFFFF;
   display: flex;
   justify-content: space-between;
@@ -24,4 +24,10 @@ nav span {
 
 #header-logo i {
   color: #f13b19;
+}
+
+@media (min-width: 1024px) {
+nav {
+  background-color: #4056A1;
+}
 }
