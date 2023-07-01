@@ -5,42 +5,49 @@
  */
 
 $(document).ready(function() {
-  const submitForm = document.getElementById('submit-form');
-  const getFormData = document.getElementById('new-form');
+  const baseUrl = "http://localhost:8080";
+  const maxTweetLength = 140;
+  const submitForm = $('#submit-form');
+  const getFormData = $('#new-form');
 
-  submitForm.addEventListener('click', function(event) {
+  submitForm.on('click', function(event) {
     event.preventDefault();
 
-    const postingData = $(getFormData).serialize();
-    const textData = $('#tweet-text').val().length;
-    const errorMsg = $('.error-msg');
+    const $postingData = $(getFormData).serialize();
+    const $textData = $('#tweet-text').val().length;
+    const $errorMsg = $('.error-msg');
 
-    if (textData > 140) {
-      errorMsg.slideUp();
+    if ($textData > maxTweetLength) {
+      $errorMsg.slideUp();
       setTimeout(function() {
-        errorMsg.text('Lenght is greater than 140 in lenght');
-        errorMsg.slideDown();
+        $errorMsg.text('Lenght is greater than 140 in lenght');
+        $errorMsg.slideDown();
       }, 500);
       return;
-    } else if (textData < 1) {
-      errorMsg.slideUp();
+    } else if ($textData < 1) {
+      $errorMsg.slideUp();
       setTimeout(function() {
-        errorMsg.text('Field can not be empty');
-        errorMsg.slideDown();
+        $errorMsg.text('Field can not be empty');
+        $errorMsg.slideDown();
       }, 500);
       return;
     };
 
+    // function to post tweet to endpoint
     $.ajax({
-      url: 'http://localhost:3000/tweets',
+      url: baseUrl + '/tweets',
       type: 'POST',
-      data: postingData,
+      data: $postingData,
       success: function(resp) {
         $('#tweet-text').val('');
         $('#fresh-tweet').empty();
+        $errorMsg.slideUp();
+        $('.counter').val(maxTweetLength);
         loadTweets();
       },
       error: function(error) {
+        $errorMsg.slideUp();
+        $('.counter').val(maxTweetLength);
         console.log(error);
       }
     });
@@ -51,6 +58,7 @@ $(document).ready(function() {
     let result = '';
     const revTweet = tweets.reverse();
 
+    // loop through tweets
     for (let i = 0; i < tweets.length; i++) {
 
       result = createTweetElement(revTweet[i]);
@@ -63,20 +71,20 @@ $(document).ready(function() {
     const $tweet = $(`<article class="tweet">
   <header>
     <span>
-      <img src="${tweet.user.avatars}" alt="">
-      <a>${tweet.user.name}</a>
+      <img src="${getEscape(tweet.user.avatars)}" alt="">
+      <a>${getEscape(tweet.user.name)}</a>
     </span>
-    <a class="profile-style">${tweet.user.handle}</a>
+    <a class="profile-style">${getEscape(tweet.user.handle)}</a>
   </header>
 
   <body>
     <div class="tweet-text">
-    ${tweet.content.text}
+    ${getEscape(tweet.content.text)}
     </div>
     <hr>
   </body>
   <footer>
-    <span>${timeago.format(tweet.created_at)} days ago</span>
+    <span>${timeago.format(getEscape(tweet.created_at))}</span>
     <div>
       <i class="fa-solid fa-flag"></i>
       <i class="fa-sharp fa-solid fa-repeat"></i>
@@ -88,9 +96,16 @@ $(document).ready(function() {
     return $tweet;
   };
 
+  const getEscape = function(str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
+  // function to get tweet from endpoint
   const loadTweets = () => {
     $.ajax({
-      url: 'http://localhost:3000/tweets',
+      url: baseUrl + '/tweets',
       type: 'GET',
       success: function(resp) {
         renderTweets(resp);
